@@ -1,0 +1,62 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h2 class="text-center mb-4">My Vehicles</h2>
+
+<table class="table table-bordered table-striped">
+
+<thead class="table-dark">
+
+<tr>
+<th>Image</th>
+<th>Name</th>
+<th>Brand</th>
+<th>Type</th>
+<th>Rent / Day</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for v in vehicles %}
+
+<tr>
+
+<td>
+<!--<img src="/static/uploads/{{v.image}}" width="100"> -->
+<img src="{{ url_for('static', filename='images/' + v.image) if v.image else url_for('static', filename='images/default.jpg') }}" class="card-img-top" width="30" height="50">
+</td>
+
+<td>{{v.name}}</td>
+
+<td>{{v.brand}}</td>
+
+<td>{{v.type}}</td>
+
+<td>₹{{v.rent_per_day}}</td>
+
+<td>
+
+<a href="/provider/delete_vehicle/{{v.vehicle_id}}" 
+class="btn btn-danger btn-sm">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% include "common/footer.html" %}

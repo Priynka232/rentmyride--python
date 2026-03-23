@@ -1,0 +1,84 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+      <div class="card shadow">
+
+        <div class="card-body">
+
+          <h3 class="text-center mb-4">User Registration</h3>
+
+          <form method="POST" action="/register">
+
+            <!-- Full Name -->
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Enter your full name" required minlength="3">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" class="form-control" placeholder="example@gmail.com" required>
+            </div>
+
+            <!-- Phone -->
+            <div class="mb-3">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" name="phone" class="form-control" placeholder="Enter 10 digit phone number" pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <div class="input-group">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter password" required minlength="6">
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">Show</button>
+              </div>
+            </div>
+
+            <!-- Role -->
+            <div class="mb-3">
+              <label class="form-label">Select Role</label>
+              <select name="role" class="form-control" required>
+                <option value="">Select Role</option>
+                <option value="user">User</option>
+                <option value="provider">Vehicle Provider</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+
+            <!-- Register Button -->
+            <button class="btn btn-primary w-100 mb-2">Register</button>
+
+            <!-- Login Button -->
+            <a href="/login" class="btn btn-outline-secondary w-100">Already have an account? Login</a>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function togglePassword() {
+  var password = document.getElementById("password");
+  if (password.type === "password") {
+    password.type = "text";
+  } else {
+    password.type = "password";
+  }
+}
+</script>
+
+{% include "common/footer.html" %}

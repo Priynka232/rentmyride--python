@@ -1,0 +1,36 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h3>Manage Users</h3>
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Role</th>
+<th>Action</th>
+</tr>
+
+{% for u in users %}
+<tr>
+<td>{{u.user_id}}</td>
+<td>{{u.name}}</td>
+<td>{{u.email}}</td>
+<td>{{u.role}}</td>
+<td>
+<a href="/admin/delete_user/{{u.user_id}}" 
+class="btn btn-danger btn-sm">
+Delete
+</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+{% include "common/footer.html" %}

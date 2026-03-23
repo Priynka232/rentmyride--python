@@ -1,0 +1,20 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h3>Booking Details</h3>
+<hr>
+
+<p><b>Booking ID:</b> {{booking.booking_id}}</p>
+<p><b>Vehicle:</b> {{booking.vehicle_name}}</p>
+<p><b>Start Date:</b> {{booking.start_date}}</p>
+<p><b>End Date:</b> {{booking.end_date}}</p>
+<p><b>Total Amount:</b> ₹{{booking.total_amount}}</p>
+<p><b>Status:</b> {{booking.booking_status}}</p>
+<p><b>Payment:</b> {{booking.payment_status}}</p>
+
+<a href="/user/booking_history" class="btn btn-primary">Back</a>
+
+</div>
+
+{% include "common/footer.html" %}

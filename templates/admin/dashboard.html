@@ -1,0 +1,186 @@
+{% include "common/header.html" %}
+
+<style>
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card h2 {
+    font-weight: bold;
+}
+
+.section {
+    display: none;
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.btn-custom {
+    border-radius: 20px;
+}
+</style>
+
+<div class="container mt-5">
+<a href="/login" 
+       class="btn btn-danger position-absolute end-12 top-10 translate-middle-y">
+        Logout
+    </a>
+<h2 class="text-center mb-4">👨‍💼 Admin Dashboard</h2>
+ <!--<a href="/login" class="btn btn-danger">Logout</a>-->
+  
+<!-- 🔥 CARDS -->
+<div class="row text-center">
+
+<div class="col-md-4">
+<div class="card shadow p-4 bg-light text-dark">
+<h5>👤 Users</h5>
+<h2>{{ users|length }}</h2>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow p-4 bg-light text-dark">
+<h5>🚗 Vehicles</h5>
+<h2>{{ vehicles|length }}</h2>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow p-4 bg-light text-dark">
+<h5>📋 Bookings</h5>
+<h2>{{ bookings|length }}</h2>
+</div>
+</div>
+
+</div>
+
+<br>
+
+<!-- 🔘 BUTTONS -->
+<div class="text-center mb-4">
+<button class="btn btn-primary btn-custom" onclick="showSection('users')">Users</button>
+<button class="btn btn-success btn-custom" onclick="showSection('vehicles')">Vehicles</button>
+<button class="btn btn-warning btn-custom" onclick="showSection('bookings')">Bookings</button>
+</div>
+
+<!-- 👤 USERS -->
+<div id="users" class="section">
+<h3>Users</h3>
+<table class="table table-bordered">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Role</th>
+<th>Action</th>
+</tr>
+
+{% for u in users %}
+<tr>
+<td>{{u.user_id}}</td>
+<td>{{u.name}}</td>
+<td>{{u.email}}</td>
+<td>{{u.role}}</td>
+<td>
+{% if u.status == "active" %}
+    <a href="/admin/block_user/{{u.user_id}}" class="btn btn-warning btn-sm">
+        Block
+    </a>
+{% else %}
+    <a href="/admin/unblock_user/{{u.user_id}}" class="btn btn-success btn-sm">
+        Unblock
+    </a>
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<!-- 🚗 VEHICLES -->
+<div id="vehicles" class="section">
+<h3>Vehicles</h3>
+<table class="table table-bordered">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Rent</th>
+<th>Action</th>
+</tr>
+
+{% for v in vehicles %}
+<tr>
+<td>{{v.vehicle_id}}</td>
+<td>{{v.name}}</td>
+<td>₹{{v.rent_per_day}}</td>
+<td>
+{% if v.status == "active" %}
+    <a href="/admin/block_vehicle/{{v.vehicle_id}}" class="btn btn-warning btn-sm">
+        Block
+    </a>
+{% else %}
+    <a href="/admin/unblock_vehicle/{{v.vehicle_id}}" class="btn btn-success btn-sm">
+        Unblock
+    </a>
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<!-- 📋 BOOKINGS -->
+<div id="bookings" class="section">
+<h3>Bookings</h3>
+<table class="table table-bordered">
+<tr>
+<th>ID</th>
+<th>User</th>
+<th>Vehicle</th>
+<th>Start</th>
+<th>End</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+{% for b in bookings %}
+<tr>
+<td>{{b.booking_id}}</td>
+<td>{{b.user_name}}</td>
+<td>{{b.vehicle_name}}</td>
+<td>{{b.start_date}}</td>
+<td>{{b.end_date}}</td>
+<td>₹{{b.total_amount}}</td>
+<td>{{b.booking_status}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+</div>
+
+<script>
+function showSection(section) {
+
+    document.getElementById("users").style.display = "none";
+    document.getElementById("vehicles").style.display = "none";
+    document.getElementById("bookings").style.display = "none";
+
+    document.getElementById(section).style.display = "block";
+}
+</script>
+
+{% include "common/footer.html" %}

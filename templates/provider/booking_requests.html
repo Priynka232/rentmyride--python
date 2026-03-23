@@ -1,0 +1,60 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h3 class="text-center mb-4">📋 Booking Requests</h3>
+
+<table class="table table-bordered text-center">
+
+<thead class="table-dark">
+<tr>
+<th>User</th>
+<th>Vehicle</th>
+<th>Start</th>
+<th>End</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for b in bookings %}
+<tr>
+
+<td>{{ b.user_name }}</td>
+<td>{{ b.vehicle_name }}</td>
+<td>{{ b.start_date }}</td>
+<td>{{ b.end_date }}</td>
+<td>₹{{ b.total_amount }}</td>
+
+<td>
+{% if b.booking_status == "Pending" %}
+<span class="badge bg-warning">Pending</span>
+{% elif b.booking_status == "Confirmed" %}
+<span class="badge bg-success">Confirmed</span>
+{% else %}
+<span class="badge bg-danger">Cancelled</span>
+{% endif %}
+</td>
+
+<td>
+{% if b.booking_status == "Pending" %}
+<a href="/provider/accept_booking/{{b.booking_id}}" class="btn btn-success btn-sm">Accept</a>
+<a href="/provider/reject_booking/{{b.booking_id}}" class="btn btn-danger btn-sm">Reject</a>
+{% else %}
+<span class="text-muted">No Action</span>
+{% endif %}
+</td>
+
+</tr>
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% include "common/footer.html" %}

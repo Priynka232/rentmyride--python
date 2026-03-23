@@ -1,0 +1,47 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5 text-center">
+
+    {% if booking.payment_status == "Paid" %}
+
+        <h2 class="text-success">Payment Successful ✅</h2>
+        <h4>Booking Confirmed</h4>
+
+    {% else %}
+
+        <h2 class="text-warning">Payment Pending ⏳</h2>
+        <h4>Booking Confirmed (Pay at Pickup)</h4>
+
+    {% endif %}
+
+    <hr>
+
+    <p><b>Booking ID:</b> {{ booking.booking_id }}</p>
+    <p><b>Vehicle:</b> {{ booking.name }}</p>
+    <p><b>Start Date:</b> {{ booking.start_date }}</p>
+    <p><b>End Date:</b> {{ booking.end_date }}</p>
+
+    {% if booking.payment_status == "Paid" %}
+
+        <p><b>Total Amount Paid:</b> ₹{{ booking.total_price }}</p>
+
+    {% else %}
+
+        <p><b>Total Amount:</b> ₹{{ booking.total_price }}</p>
+        <p class="text-danger"><b>Remaining Payment:</b> ₹{{ booking.total_price }}</p>
+
+    {% endif %}
+
+    <p><b>Payment Status:</b> {{ booking.payment_status }}</p>
+
+    <br>
+
+    <a href="/dashboard" class="btn btn-primary">Go to Dashboard</a>
+    <a href="/user/booking_history" class="btn btn-success">View Booking History</a>
+
+</div>
+
+{% include "common/footer.html" %}
+
+
+    

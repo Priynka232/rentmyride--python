@@ -1,0 +1,66 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h3 class="text-center mb-4">Your Booking History</h3>
+
+<table class="table table-bordered text-center">
+<thead class="table-dark">
+<tr>
+<th>ID</th>
+<th>Vehicle</th>
+<th>Start</th>
+<th>End</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Payment</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for b in bookings %}
+<tr>
+
+<td>{{ b.booking_id }}</td>
+<td>{{ b.vehicle_name }}</td>
+<td>{{ b.start_date }}</td>
+<td>{{ b.end_date }}</td>
+<td>₹{{ b.total_amount }}</td>
+
+<td>
+{% if b.booking_status == "Confirmed" %}
+<span class="badge bg-success">Confirmed</span>
+{% elif b.booking_status == "Cancelled" %}
+<span class="badge bg-danger">Cancelled</span>
+{% else %}
+<span class="badge bg-secondary">{{ b.booking_status }}</span>
+{% endif %}
+</td>
+
+<td>
+{% if b.payment_status == "Paid" %}
+<span class="badge bg-success">Paid</span>
+{% else %}
+<span class="badge bg-warning">Pending</span>
+{% endif %}
+</td>
+
+<td>
+<a href="/booking_details/{{b.booking_id}}" class="btn btn-info btn-sm">View</a>
+
+{% if b.booking_status != "Cancelled" %}
+<a href="/cancel_booking/{{b.booking_id}}" class="btn btn-danger btn-sm">Cancel</a>
+{% endif %}
+</td>
+
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+
+</div>
+
+{% include "common/footer.html" %}

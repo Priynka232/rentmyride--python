@@ -1,0 +1,47 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h3 class="text-center mb-4">🚗 Recommended Vehicles</h3>
+
+<div class="row">
+
+{% for v in vehicles %}
+
+<div class="col-md-4">
+<div class="card mb-4 shadow">
+
+<img src="{{ url_for('static', filename='images/' + v.image) if v.image else url_for('static', filename='images/default.jpg') }}" class="card-img-top" height="200">
+
+<div class="card-body text-center">
+{% if message %}
+<div class="alert alert-danger text-center">
+    {{ message }}
+</div>
+{% endif %}
+ 
+        
+
+<h5>{{v.name}}</h5>
+
+<p>
+Type: {{v.type}} <br>
+Price: ₹{{v.rent_per_day}} / day
+</p>
+
+<a href="/book/{{v.vehicle_id}}" class="btn btn-success">
+Book Now
+</a>
+
+</div>
+
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% include "common/footer.html" %}

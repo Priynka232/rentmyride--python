@@ -1,0 +1,84 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+
+<div class="card shadow">
+<div class="card-body">
+
+<h3 class="text-center mb-4">Add Vehicle</h3>
+
+<form method="POST" enctype="multipart/form-data">
+
+<!-- Vehicle Name -->
+<div class="mb-3">
+<label class="form-label">Vehicle Name</label>
+<input type="text"
+name="name"
+class="form-control"
+placeholder="e.g Honda City"
+required>
+</div>
+
+<!-- Brand -->
+<div class="mb-3">
+<label class="form-label">Brand</label>
+<input type="text"
+name="brand"
+class="form-control"
+placeholder="e.g Honda"
+required>
+</div>
+
+<!-- Vehicle Type -->
+<div class="mb-3">
+<label class="form-label">Vehicle Type</label>
+<select name="type" class="form-control" required>
+
+<option value="">Select Type</option>
+<option value="Car">Car</option>
+<option value="Bike">Bike</option>
+<option value="Scooter">Scooter</option>
+<option value="Bus">Bus</option>
+<option value="Mini Bus">Mini Bus </option>
+
+</select>
+</div>
+
+<!-- Rent -->
+<div class="mb-3">
+<label class="form-label">Rent Per Day (₹)</label>
+<input type="number"
+name="rent"
+class="form-control"
+placeholder="Enter rent per day"
+min="100"
+required>
+</div>
+
+<!-- Image Upload -->
+<div class="mb-3">
+<label class="form-label">Vehicle Image</label>
+<input type="file"
+name="image"
+class="form-control"
+accept="image/*"
+required>
+</div>
+
+<button class="btn btn-primary w-100">
+Add Vehicle
+</button>
+</form>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+{% include "common/footer.html" %}

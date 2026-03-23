@@ -1,0 +1,55 @@
+
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h2 class="text-center mb-4">Available Vehicles in Pune</h2>
+
+<div class="row">
+
+{% for v in vehicles %}
+
+<div class="col-md-4 mb-4">
+
+<div class="card shadow vehicle-card">
+
+<img src="/static/uploads/{{v.image}}" 
+class="card-img-top" 
+height="200">
+
+<div class="card-body text-center">
+
+<h5 class="card-title">{{v.name}}</h5>
+
+<p class="text-muted">{{v.brand}}</p>
+
+<p>Type : {{v.type}}</p>
+
+<h6 class="text-success">
+₹{{v.rent_per_day}} / day
+</h6>
+
+<!-- Buttons -->
+
+<a href="/vehicle/{{v.vehicle_id}}" 
+class="btn btn-primary btn-sm mt-2">
+
+View Details
+
+</a>
+
+<a href="/book/{{v.vehicle_id}}">Book Now</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% include "common/footer.html" %}

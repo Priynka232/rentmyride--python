@@ -1,0 +1,123 @@
+{% include "common/header.html" %}
+
+<style>
+    body {
+    background-image: url('/static/images/car.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #cccccc;
+}
+.about-hero {
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+.about-hero h1 {
+    font-weight: 700;
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.about-section {
+    padding: 60px 20px;
+    color: #fff;
+}
+
+.about-section h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Team Cards */
+.team-member {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-member h5 {
+    font-weight: 600;
+}
+
+.team-member p {
+    font-size: 0.9rem;
+}
+</style>
+
+<!-- Hero Section -->
+<section class="about-hero">
+    <div class="container">
+        <h1>About RentMyRide</h1>
+        <p>We are committed to making your journey easy, convenient, and memorable. Drive your dream car with just a few clicks!</p>
+    </div>
+</section>
+
+<!-- Company Info -->
+<section class="about-section container">
+    <h2>Our Mission & Vision</h2>
+    <p>
+        At RentMyRide, our mission is to provide a seamless car and bike rental experience to everyone. 
+        We envision a world where transportation is simple, accessible, and fun, whether it's a short trip in the city or a long weekend getaway.
+    </p>
+</section>
+
+<!-- Team Section -->
+<section class="about-section container">
+    <h2>Meet Our Team</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="team-member">
+                <img src="/static/images/team1.jpg" alt="Team Member 1">
+                <h5>Pramod Yadav</h5>
+                <p>Founder & CEO</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="team-member">
+                <img src="/static/images/team2.jpg" alt="Team Member 2">
+                <h5>Priyanka Sharma</h5>
+                <p>CTO</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="team-member">
+                <img src="/static/images/team3.jpg" alt="Team Member 3">
+                <h5>Rohit Kumar</h5>
+                <p>Head of Operations</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include "common/footer.html" %}

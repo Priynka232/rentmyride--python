@@ -1,0 +1,54 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+     <h2 class="flex-grow-1 text-center mb-0">
+        🚗 Provider Dashboard
+    </h2>
+    <a href="/login" class="btn btn-danger">Logout</a>
+</div>
+     <div class="row justify-content-center">
+   
+    
+
+        <!-- Add Vehicle Card -->
+        <div class="col-md-4 mb-6">
+            <div class="card shadow text-center p-3">
+                <h4>Add Vehicle</h4>
+                <p>Add new cars or bikes for rent</p>
+                <a href="/provider/add_vehicle" class="btn btn-success">
+                    ➕ Add Vehicle
+                </a>
+            </div>
+        </div>
+
+        <!--My Vehicles Card -->
+        <div class="col-md-4 mb-6">
+            <div class="card shadow text-center p-3">
+                <h4>My Vehicles</h4>
+                <p>View and manage your vehicles</p>
+                <a href="/provider/my_vehicles" class="btn btn-primary">
+                    🚘 View Vehicles
+                </a>
+            </div>
+        </div>
+
+         <!-- Booking Requests Card -->
+        <div class="col-md-4 mb-6">
+             <div class="card shadow text-center p-3">
+                <h4>Booking Requests</h4>
+                <p>Manage user booking requests</p>
+                <a href="/provider/bookings" class="btn btn-warning">
+                    📋 View Bookings
+                </a>
+            </div>
+        </div>
+
+    </div> 
+
+</div> 
+
+
+       
+
+{% include "common/footer.html" %}

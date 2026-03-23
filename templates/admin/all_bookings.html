@@ -1,0 +1,35 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h3>All Bookings</h3>
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>User</th>
+<th>Vehicle</th>
+<th>Start Date</th>
+<th>End Date</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+{% for b in bookings %}
+<tr>
+<td>{{b.booking_id}}</td>
+<td>{{b.user_name}}</td>
+<td>{{b.vehicle_name}}</td>
+<td>{{b.start_date}}</td>
+<td>{{b.end_date}}</td>
+<td>₹{{b.total_amount}}</td>
+<td>{{b.booking_status}}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+{% include "common/footer.html" %}

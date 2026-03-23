@@ -1,0 +1,136 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+<div class="card shadow p-4">
+
+<h3 class="mb-4">Book Vehicle</h3>
+
+<form action="/confirm_booking/{{vehicle.vehicle_id}}" method="POST">
+
+<!-- Pickup Location -->
+<div class="mb-3">
+<label class="form-label">Pickup Location</label>
+
+<select name="pickup_location" class="form-control" onchange="toggleLocation(this)">
+<option value="">Select Location</option>
+<option value="Pune Station">Pune Station</option>
+<option value="Shivaji Nagar">Shivaji Nagar</option>
+<option value="Hinjewadi">Hinjewadi</option>
+<option value="Wakad">Wakad</option>
+<option value="PCMC">PCMC</option>
+<option value="Other">Other</option>
+</select>
+<!-- Hidden input -->
+<input type="text" name="other_location" id="other_location"
+       class="form-control mt-2"
+       placeholder="Pickup is only available in Pune"
+       style="display:none;">
+</div>
+
+<!-- Rental Type -->
+<div class="mb-3">
+<label class="form-label">Rental Type</label>
+
+<select name="rental_type" class="form-control" required>
+<option value="">Select</option>
+<option value="hour">Per Hour</option>
+<option value="day">Per Day</option>
+</select>
+</div>
+
+<!-- Start Date -->
+<div class="mb-3">
+<label>Start Date</label>
+<input type="date" name="start_date" class="form-control" required>
+</div>
+
+<!-- Start Time -->
+<div class="mb-3">
+<label>Start Time</label>
+<input type="time" name="start_time" class="form-control">
+</div>
+
+<!-- End Date -->
+<div class="mb-3">
+<label>End Date</label>
+<input type="date" name="end_date" class="form-control" required>
+<script>
+function toggleLocation(select){
+    let otherField = document.getElementById("other_location");
+
+    if(select.value === "Other"){
+        otherField.style.display = "block";
+    } else {
+        otherField.style.display = "none";
+    }
+}
+</script>
+</div>
+
+<!-- End Time -->
+<div class="mb-3">
+<label>End Time</label>
+<input type="time" name="end_time" class="form-control">
+</div>
+
+<!-- Driver Option -->
+<div class="mb-3">
+<label class="form-label">Driver Needed?</label>
+
+<select name="driver_required" class="form-control">
+<option value="No">No</option>
+<option value="Yes">Yes</option>
+</select>
+</div>
+
+<!-- Payment -->
+<div class="mb-3">
+<label>Payment Method</label>
+
+<select name="payment_method" class="form-control" onchange="showPaymentField(this)">
+    <option value="">Select</option>
+    <option value="UPI">UPI</option>
+    <option value="Card">Card</option>
+    <option value="Cash">Cash (Pay at Distination)</option>
+</select>
+
+<!-- UPI Field -->
+<input type="text" name="upi_id" id="upi_field"
+       class="form-control mt-2"
+       placeholder="Enter UPI id (eg. user@okaxis )"
+       style="display:none;">
+
+<!-- Card Field -->
+<input type="text" name="card_number" id="card_field"
+       class="form-control mt-2"
+       placeholder="Enter Card Number 16 digits"
+       maxlength="16"
+       style="display:none;">
+<script>
+function showPaymentField(select){
+    let upi = document.getElementById("upi_field");
+    let card = document.getElementById("card_field");
+
+    upi.style.display = "none";
+    card.style.display = "none";
+
+    if(select.value === "UPI"){
+        upi.style.display = "block";
+    }
+    else if(select.value === "Card"){
+        card.style.display = "block";
+    }
+}
+</script>
+</div>
+
+<button type="submit" class="btn btn-success">
+Confirm Booking
+</button>
+
+</form>
+
+</div>
+</div>
+
+{% include "common/footer.html" %}

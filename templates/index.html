@@ -1,0 +1,90 @@
+{% include "common/header.html" %}
+
+<style>
+/* Hero Section */
+body {
+    background-image: url('/static/images/car.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #cccccc;
+}
+.hero {
+    background-color: transparent; /* black hata diya */
+    color: #fff; /* text white */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* shadow for readability */
+    padding: 100px 0;
+}
+
+.hero h1 {
+    font-weight: 700;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+}
+
+.hero p {
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* Buttons */
+.hero .btn-primary {
+    font-weight: 600;
+}
+.hero .btn-outline-light {
+    border-color: #fff;
+    color: #fff;
+}
+
+.hero .btn-outline-light:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Why Choose Us Section */
+.why-choose {
+    background-color: transparent;
+    color: #fff; /* text white */
+    padding: 60px 0;
+    text-align: center;
+}
+
+.why-choose h2, .why-choose h4 {
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.why-choose p {
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+</style>
+
+<section class="hero text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Find Your Perfect Ride</h1>
+    <p class="lead">Rent cars and bikes easily with RentMyRide</p>
+    <a href="/register" class="btn btn-primary btn-lg m-2">Get Started</a>
+    <a href="/login" class="btn btn-outline-light btn-lg m-2">Login</a>
+  </div>
+</section>
+
+<section class="why-choose container mt-5">
+  <h2 class="mb-4">Why Choose Us</h2>
+  <div class="row text-center">
+    <div class="col-md-4">
+      <h4>Affordable Prices</h4>
+      <p>Best rental prices available</p>
+    </div>
+    <div class="col-md-4">
+      <h4>Wide Range</h4>
+      <p>Cars and bikes from many brands</p>
+    </div>
+    <div class="col-md-4">
+      <h4>Easy Booking</h4>
+      <p>Book your ride in seconds</p>
+    </div>
+  </div>
+</section>
+
+{% include "common/footer.html" %}

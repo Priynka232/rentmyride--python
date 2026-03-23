@@ -1,0 +1,35 @@
+{% include "common/header.html" %}
+
+<div class="container mt-5">
+
+<h3>Find Best Vehicle 🚗</h3>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Budget (₹ per day)</label>
+<input type="number" name="budget" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label>Passengers</label>
+<input type="number" name="passengers" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label>Trip Type</label>
+<select name="trip_type" class="form-control">
+<option value="short">Short Trip</option>
+<option value="long">Long Trip</option>
+</select>
+</div>
+
+<button class="btn btn-primary">Get Recommendation</button>
+
+</form>
+
+</div>
+
+{% include "common/footer.html" %}
+
+
